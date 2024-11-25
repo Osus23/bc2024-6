@@ -119,3 +119,20 @@ app.get('/UploadForm.html', (req, res) => {
 app.listen(options.port, options.host, () => {
   console.log(`Server running at http://${options.host}:${options.port}/`);
 });
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+const swaggerDocument = YAML.load('./swagger.yaml');
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+/**
+ * @swagger
+ * /notes:
+ *   get:
+ *     description: Отримати всі нотатки
+ *     responses:
+ *       200:
+ *         description: Успішна відповідь
+ */
+app.get('/notes', (req, res) => {
+  res.send([]);
+});
