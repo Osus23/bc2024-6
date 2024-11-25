@@ -1,0 +1,28 @@
+openapi: 3.0.0
+info:
+  title: API для лабораторної роботи
+  description: Документація API сервісу
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000
+paths:
+  /notes:
+    get:
+      summary: Отримати всі нотатки
+      responses:
+        200:
+          description: Успішна відповідь
+  /notes/{id}:
+    get:
+      summary: Отримати нотатку за ID
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: Успішна відповідь
+        404:
+          description: Нотатку не знайдено
